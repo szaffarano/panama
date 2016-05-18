@@ -1,0 +1,28 @@
+version: "2"
+
+services:
+  neo:
+    image: neo4j:3.0
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - "panama-data:/data"
+      - "./neo/data:/var/lib/neo4j/import"
+      - "./neo/plugins:/plugins"
+    environment:
+      - "NEO4J_dbms_memory_heap_maxSize=5000"
+      - "NEO4J_dbms_memory_pagecache_size=500M"
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
+
+volumes:
+  panama-data:
+    external: true
+
+networks:
+  common:
+    external:
+      name: common
