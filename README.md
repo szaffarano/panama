@@ -18,5 +18,5 @@ $ docker-compose up -d
 $ docker exec -it docker_neo_1 bin/neo4j-shell -file import/create.cypher
 
 # depura, indexa, etc
-$ docker exec -it docker_neo_1 bin/neo4j-shell -file import/cleanum.cypher
+$ docker exec -it docker_neo_1 bin/neo4j-shell -file import/cleanup.cypher
 ```
