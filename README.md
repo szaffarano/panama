@@ -14,9 +14,18 @@ $ docker-compose up -d
 ## Carga de datos
 
 ```sh
+# Donde <nombre contenedor neo> es el nombre o id del container
+# ejecutando la base neo4j
+
 # inserta en neo
-$ docker exec -it docker_neo_1 bin/neo4j-shell -file import/create.cypher
+$ docker exec -it <nombre contenedor neo> bin/neo4j-shell -file import/create.cypher
 
 # depura, indexa, etc
-$ docker exec -it docker_neo_1 bin/neo4j-shell -file import/cleanum.cypher
+$ docker exec -it <nombre contenedor neo> bin/neo4j-shell -file import/cleanum.cypher
+```
+
+O bien utilizando el script que automatiza lo anterior
+
+```sh
+$ ./insert.sh
 ```
