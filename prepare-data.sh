@@ -48,38 +48,38 @@ LOAD CSV WITH HEADERS FROM "file:///Officers.csv" AS row MERGE (n:Node {node_id:
 
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///all_edges.csv" AS row
-WITH row WHERE row.rel_type = "intermediary_of"
+WITH row WHERE row.rel_type = "intermediary of"
 MATCH (n1:Node) WHERE n1.node_id = row.node_1
 MATCH (n2:Node) WHERE n2.node_id = row.node_2
 CREATE (n1)-[:INTERMEDIARY_OF]->(n2);
 
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///all_edges.csv" AS row
-WITH row WHERE row.rel_type = "officer_of"
+WITH row WHERE row.rel_type = "Officer of"
 MATCH (n1:Node) WHERE n1.node_id = row.node_1
 MATCH (n2:Node) WHERE n2.node_id = row.node_2
 CREATE (n1)-[:OFFICER_OF]->(n2);
 
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///all_edges.csv" AS row
-WITH row WHERE row.rel_type = "registered_address"
+WITH row WHERE row.rel_type = "registered address"
 MATCH (n1:Node) WHERE n1.node_id = row.node_1
 MATCH (n2:Node) WHERE n2.node_id = row.node_2
 CREATE (n1)-[:REGISTERED_ADDRESS]->(n2);
 
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///all_edges.csv" AS row
-WITH row WHERE row.rel_type = "similar"
+WITH row WHERE row.rel_type = "similar name and address as"
 MATCH (n1:Node) WHERE n1.node_id = row.node_1
 MATCH (n2:Node) WHERE n2.node_id = row.node_2
-CREATE (n1)-[:SIMILAR]->(n2);
+CREATE (n1)-[:SIMILAR_ADDRESS]->(n2);
 
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///all_edges.csv" AS row
-WITH row WHERE row.rel_type = "underlying"
+WITH row WHERE row.rel_type =~ "(i?)beneficiary of"
 MATCH (n1:Node) WHERE n1.node_id = row.node_1
 MATCH (n2:Node) WHERE n2.node_id = row.node_2
-CREATE (n1)-[:UNDERLYING]->(n2);
+CREATE (n1)-[:BENEFICIARY_OF]->(n2);
 
 DROP CONSTRAINT ON (n:Node) ASSERT n.node_id IS UNIQUE;
 
