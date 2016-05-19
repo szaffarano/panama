@@ -21,7 +21,7 @@ $ docker-compose up -d
 $ docker exec -it <nombre contenedor neo> bin/neo4j-shell -file import/create.cypher
 
 # depura, indexa, etc
-$ docker exec -it <nombre contenedor neo> bin/neo4j-shell -file import/cleanum.cypher
+$ docker exec -it <nombre contenedor neo> bin/neo4j-shell -file import/cleanup.cypher
 ```
 
 O bien utilizando el script que automatiza lo anterior
