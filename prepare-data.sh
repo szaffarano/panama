@@ -18,6 +18,7 @@ do
     ([ -d $d ] && rm -rf $d) || mkdir -p $d
 done
 
+echo "Descargando plugin apoc..."
 curl -q -# -L https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/1.0.0/apoc-1.0.0.jar \
     -o $PLUGINS/apoc-1.0.0.jar
 
@@ -157,3 +158,7 @@ CALL apoc.index.addAllNodes('offshore',{
   Address: ["address"],
   Entity: ["name", "address", "service_provider", "former_name", "company_type"]});
 EOF
+
+echo "El ambiente fue generado con éxito, ejecutar"
+echo "   docker-compose up -d"
+echo "para iniciar la base de datos"
